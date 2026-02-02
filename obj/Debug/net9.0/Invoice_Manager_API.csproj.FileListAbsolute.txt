@@ -167,3 +167,4 @@ C:\Users\Quram\Desktop\programing\Invoice_Manager_API\obj\Debug\net9.0\refint\In
 C:\Users\Quram\Desktop\programing\Invoice_Manager_API\obj\Debug\net9.0\Invoice_Manager_API.pdb
 C:\Users\Quram\Desktop\programing\Invoice_Manager_API\obj\Debug\net9.0\Invoice_Manager_API.genruntimeconfig.cache
 C:\Users\Quram\Desktop\programing\Invoice_Manager_API\obj\Debug\net9.0\ref\Invoice_Manager_API.dll
+C:\Users\Quram\Desktop\programing\Invoice_Manager_API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
