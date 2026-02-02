@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder
                         .Configuration
-                        .GetConnectionString("DefaultConnectionString");
+                        .GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<InvoiceManagerApiDbContext>(
     options => options.UseSqlServer(connectionString)
 );
