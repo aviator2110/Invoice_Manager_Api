@@ -13,6 +13,8 @@ public class Invoice
     public DateTimeOffset CreatedAt { get; set; }
     public DateTimeOffset UpdatedAt { get; set; } // Обновляется при любом изменении
     public DateTimeOffset? DeletedAt { get; set; } // Soft delete
+
+    public Customer Customer { get; set; } = null!;
 }
 
 public enum InvoiceStatus

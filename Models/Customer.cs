@@ -10,4 +10,6 @@ public class Customer
     public DateTimeOffset CreatedAt { get; set; }
     public DateTimeOffset UpdatedAt { get; set; } // Обновляется при любом изменении сущности
     public DateTimeOffset? DeletedAt { get; set; } // Используеться для soft delete
+
+    public List<Invoice> Invoices { get; set; } = new List<Invoice>();
 }
