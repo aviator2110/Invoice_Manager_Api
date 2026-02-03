@@ -31,7 +31,7 @@ public class InvoiceService : IInvoiceService
         throw new NotImplementedException();
     }
 
-    public Task<InvoiceResponseDto> StatusDeleteAsync(int id)
+    public Task<bool> DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }
