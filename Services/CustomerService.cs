@@ -21,7 +21,7 @@ public class CustomerService : ICustomerService
         throw new NotImplementedException();
     }
 
-    public Task<CustomerResponseDto> DeleteAsync(int id)
+    public Task<bool> DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }
@@ -36,7 +36,7 @@ public class CustomerService : ICustomerService
         throw new NotImplementedException();
     }
 
-    public Task<CustomerResponseDto> UpdateAsync(CustomerUpdateRequest request)
+    public Task<CustomerResponseDto> UpdateAsync(int id, CustomerUpdateRequest request)
     {
         throw new NotImplementedException();
     }
