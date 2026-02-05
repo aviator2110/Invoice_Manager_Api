@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using Invoice_Manager_API.Data;
 using Invoice_Manager_API.DTO.InvoiceDTO;
+using Invoice_Manager_API.Models;
 using Invoice_Manager_API.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Invoice_Manager_API.Services;
 
@@ -16,33 +18,99 @@ public class InvoiceService : IInvoiceService
         _mapper = mapper;
     }
 
-    public Task<InvoiceResponseDto> CreateAsync(InvoiceCreateRequest request)
+    public async Task<InvoiceResponseDto> CreateAsync(InvoiceCreateRequest request)
     {
-        throw new NotImplementedException();
+        Invoice invoice = this._mapper.Map<Invoice>(request);
+
+        this._context.Invoices.Add(invoice);
+
+        await this._context.SaveChangesAsync();
+
+        await this._context
+            .Entry(invoice)
+            .Collection(i => i.Rows)
+            .LoadAsync();
+
+        await this._context
+            .Entry(invoice)
+            .Reference(i => i.Customer)
+            .LoadAsync();
+
+        return this._mapper.Map<InvoiceResponseDto>(invoice);
     }
 
-    public Task<IEnumerable<InvoiceResponseDto>> GetAllAsync()
+    public async Task<IEnumerable<InvoiceResponseDto>> GetAllAsync()
     {
-        throw new NotImplementedException();
+        var invoices = await this._context
+            .Invoices
+            .Include(i => i.Customer)
+            .Include(i => i.Rows)
+            .ToListAsync();
+
+        return this._mapper.Map<IEnumerable<InvoiceResponseDto>>(invoices);
     }
 
-    public Task<InvoiceResponseDto> GetByIdAsync(int id)
+    public async Task<InvoiceResponseDto?> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        var invoice = await this._context.Invoices.FindAsync(id);
+
+        if (invoice is null)
+        {
+            return null;
+        }
+
+        return this._mapper.Map<InvoiceResponseDto>(invoice);
     }
 
-    public Task<bool> DeleteAsync(int id)
+    public async Task<bool> DeleteAsync(int id)
     {
-        throw new NotImplementedException();
+        var invoice = await this._context.Invoices.FindAsync(id);
+
+        if (invoice is null)
+        {
+            return false;
+        }
+
+        this._context.Invoices.Remove(invoice);
+
+        await this._context.SaveChangesAsync();
+
+        return true;
     }
 
-    public Task<InvoiceResponseDto> StatusUpdateAsync(InvoiceStatusUpdateRequest request, int id)
+    public async Task<InvoiceResponseDto?> StatusUpdateAsync(InvoiceStatusUpdateRequest request, int id)
     {
-        throw new NotImplementedException();
+        var updatedInvoice = await this._context
+            .Invoices
+            .Include(i => i.Rows)
+            .Include(i => i.Customer)
+            .FirstOrDefaultAsync(i => i.Id == id);
+
+        if (updatedInvoice is null)
+        {
+            return null;
+        }
+
+        this._mapper.Map(request, updatedInvoice);
+
+        return this._mapper.Map<InvoiceResponseDto>(updatedInvoice);
     }
 
-    public Task<InvoiceResponseDto> UpdateAsync(InvoiceUpdateRequest request, int id)
+    public async Task<InvoiceResponseDto?> UpdateAsync(InvoiceUpdateRequest request, int id)
     {
-        throw new NotImplementedException();
+        var updatedInvoice = await this._context
+            .Invoices
+            .Include(i => i.Rows)
+            .Include(i => i.Customer)
+            .FirstOrDefaultAsync(i => i.Id == id);
+
+        if (updatedInvoice is null)
+        {
+            return null;
+        }
+
+        this._mapper.Map(request, updatedInvoice);
+
+        return this._mapper.Map<InvoiceResponseDto>(updatedInvoice);
     }
 }
