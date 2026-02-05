@@ -36,12 +36,12 @@ public class InvoiceService : IInvoiceService
         throw new NotImplementedException();
     }
 
-    public Task<InvoiceResponseDto> StatusUpdateAsync(InvoiceStatusUpdateRequest request)
+    public Task<InvoiceResponseDto> StatusUpdateAsync(InvoiceStatusUpdateRequest request, int id)
     {
         throw new NotImplementedException();
     }
 
-    public Task<InvoiceResponseDto> UpdateAsync(InvoiceUpdateRequest request)
+    public Task<InvoiceResponseDto> UpdateAsync(InvoiceUpdateRequest request, int id)
     {
         throw new NotImplementedException();
     }
