@@ -1,4 +1,5 @@
 ﻿using Invoice_Manager_API.Common;
+using Invoice_Manager_API.DTO.CustomerDTO;
 using Invoice_Manager_API.DTO.InvoiceDTO;
 using Invoice_Manager_API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -128,5 +129,27 @@ public class InvoicesController : ControllerBase
             ApiResponse<InvoiceResponseDto>
                 .SuccessResponse(invoice, "Invoice found")
         );
+    }
+
+    [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<ApiResponse<InvoiceResponseDto>>> Create([FromBody] InvoiceCreateRequest request)
+    {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(
+                ApiResponse<InvoiceResponseDto>
+                    .ErrorResponse("Invalid request data")
+            );
+        }
+
+        var createdInvoice = await this._invoiceService.CreateAsync(request);
+
+        return CreatedAtAction(
+                nameof(GetById),
+                new { id = createdInvoice.Id },
+                ApiResponse<InvoiceResponseDto>
+                    .SuccessResponse(createdInvoice, "Invoice created successfully"));
     }
 }
