@@ -7,4 +7,6 @@ public class CustomerResponseDto
     public string? Address { get; set; }
     public string Email { get; set; } = string.Empty;
     public string? PhoneNumber { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
+    public DateTimeOffset UpdatedAt { get; set; }
 }

@@ -195,6 +195,41 @@
   },
   {
     "ContainingType": "Invoice_Manager_API.Controllers.InvoicesController",
+    "Method": "Create",
+    "RelativePath": "api/Invoices",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Invoice_Manager_API.DTO.InvoiceDTO.InvoiceCreateRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Invoice_Manager_API.Common.ApiResponse\u00601[[Invoice_Manager_API.DTO.InvoiceDTO.InvoiceResponseDto, Invoice_Manager_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 201
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "Invoice_Manager_API.Controllers.InvoicesController",
     "Method": "Update",
     "RelativePath": "api/Invoices/{id}",
     "HttpMethod": "PUT",
