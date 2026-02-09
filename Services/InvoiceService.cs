@@ -22,6 +22,8 @@ public class InvoiceService : IInvoiceService
     {
         Invoice invoice = this._mapper.Map<Invoice>(request);
 
+        invoice.TotalSum = invoice.Rows.Sum(r => r.Sum);
+
         this._context.Invoices.Add(invoice);
 
         await this._context.SaveChangesAsync();
@@ -52,7 +54,9 @@ public class InvoiceService : IInvoiceService
 
     public async Task<InvoiceResponseDto?> GetByIdAsync(int id)
     {
-        var invoice = await this._context.Invoices.FindAsync(id);
+        var invoice = await this._context.Invoices
+            .Include(i => i.Rows)
+            .FirstOrDefaultAsync(i => i.Id == id);
 
         if (invoice is null)
         {
@@ -108,6 +112,8 @@ public class InvoiceService : IInvoiceService
         {
             return null;
         }
+
+        updatedInvoice.TotalSum = updatedInvoice.Rows.Sum(r => r.Sum);
 
         this._mapper.Map(request, updatedInvoice);
 

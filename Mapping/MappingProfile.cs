@@ -30,7 +30,8 @@ public class MappingProfile : Profile
         // Invoice
 
         CreateMap<Invoice, InvoiceResponseDto>()
-            .ForMember(dest => dest.Rows, opt => opt.MapFrom(src => src.Rows));
+            .ForMember(dest => dest.Rows, opt => opt.MapFrom(src => src.Rows))
+            .ForMember(dest => dest.TotalSum, opt => opt.MapFrom(src => src.Rows.Sum(r => r.Sum)));
 
         CreateMap<InvoiceCreateRequest, Invoice>()
             .ForMember(dest => dest.Id, opt => opt.Ignore())
