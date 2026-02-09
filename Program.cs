@@ -1,8 +1,9 @@
 using Invoice_Manager_API.Data;
+using Invoice_Manager_API.Mapping;
+using Invoice_Manager_API.Services;
 using Invoice_Manager_API.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using Invoice_Manager_API.Services;
-using Invoice_Manager_API.Mapping;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,12 @@ builder.Services.AddDbContext<InvoiceManagerApiDbContext>(
     options => options.UseSqlServer(connectionString)
 );
 
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    options.IncludeXmlComments(xmlPath);
+});
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();

@@ -17,6 +17,9 @@ public class CustomersController : ControllerBase
         this._customerService = customerService;
     }
 
+    /// <summary>
+    /// Retrieves a list of all customers in the system.
+    /// </summary>
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<IEnumerable<CustomerResponseDto>>>> GetAll()
@@ -29,6 +32,9 @@ public class CustomersController : ControllerBase
         );
     }
 
+    /// <summary>
+    /// Retrieves a customer by the specified identifier.
+    /// </summary>
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -50,6 +56,9 @@ public class CustomersController : ControllerBase
         );
     }
 
+    /// <summary>
+    /// Creates a new customer based on the provided request data.
+    /// </summary>
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -72,6 +81,9 @@ public class CustomersController : ControllerBase
                     .SuccessResponse(createdCustomer, "Customer created successfully"));
     }
 
+    /// <summary>
+    /// Updates an existing customer with the specified identifier using the provided request data.
+    /// </summary>
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -102,6 +114,9 @@ public class CustomersController : ControllerBase
         );
     }
 
+    /// <summary>
+    /// Deletes a customer with the specified identifier using a soft delete mechanism.
+    /// </summary>
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]

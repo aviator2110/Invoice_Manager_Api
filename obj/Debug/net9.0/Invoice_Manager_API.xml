@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Invoice_Manager_API</name>
+    </assembly>
+    <members>
+        <member name="M:Invoice_Manager_API.Controllers.CustomersController.GetAll">
+            <summary>
+            Retrieves a list of all customers in the system.
+            </summary>
+        </member>
+        <member name="M:Invoice_Manager_API.Controllers.CustomersController.GetById(System.Int32)">
+            <summary>
+            Retrieves a customer by the specified identifier.
+            </summary>
+        </member>
+        <member name="M:Invoice_Manager_API.Controllers.CustomersController.Create(Invoice_Manager_API.DTO.CustomerDTO.CustomerCreateRequest)">
+            <summary>
+            Creates a new customer based on the provided request data.
+            </summary>
+        </member>
+        <member name="M:Invoice_Manager_API.Controllers.CustomersController.Update(Invoice_Manager_API.DTO.CustomerDTO.CustomerUpdateRequest,System.Int32)">
+            <summary>
+            Updates an existing customer with the specified identifier using the provided request data.
+            </summary>
+        </member>
+        <member name="M:Invoice_Manager_API.Controllers.CustomersController.Delete(System.Int32)">
+            <summary>
+            Deletes a customer with the specified identifier using a soft delete mechanism.
+            </summary>
+        </member>
+        <member name="M:Invoice_Manager_API.Controllers.InvoicesController.GetAll">
+            <summary>
+            Retrieves a list of all invoices in the system.
+            </summary>
+        </member>
+        <member name="M:Invoice_Manager_API.Controllers.InvoicesController.Update(Invoice_Manager_API.DTO.InvoiceDTO.InvoiceUpdateRequest,System.Int32)">
+            <summary>
+            Updates an existing invoice with the specified identifier using the provided request data.
+            </summary>
+        </member>
+        <member name="M:Invoice_Manager_API.Controllers.InvoicesController.StatusUpdate(Invoice_Manager_API.DTO.InvoiceDTO.InvoiceStatusUpdateRequest,System.Int32)">
+            <summary>
+            Updates the status of an existing invoice with the specified identifier.
+            </summary>
+        </member>
+        <member name="M:Invoice_Manager_API.Controllers.InvoicesController.Delete(System.Int32)">
+            <summary>
+            Deletes an invoice with the specified identifier using a soft delete mechanism.
+            </summary>
+        </member>
+        <member name="M:Invoice_Manager_API.Controllers.InvoicesController.GetById(System.Int32)">
+            <summary>
+            Retrieves an invoice by the specified identifier.
+            </summary>
+        </member>
+        <member name="M:Invoice_Manager_API.Controllers.InvoicesController.Create(Invoice_Manager_API.DTO.InvoiceDTO.InvoiceCreateRequest)">
+            <summary>
+            Creates a new invoice based on the provided request data.
+            </summary>
+        </member>
+        <member name="T:Invoice_Manager_API.Migrations.Init">
+            <inheritdoc />
+        </member>
+        <member name="M:Invoice_Manager_API.Migrations.Init.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Invoice_Manager_API.Migrations.Init.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Invoice_Manager_API.Migrations.Init.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

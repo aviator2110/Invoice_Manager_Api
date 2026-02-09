@@ -17,6 +17,9 @@ public class InvoicesController : ControllerBase
         this._invoiceService = invoiceService;
     }
 
+    /// <summary>
+    /// Retrieves a list of all invoices in the system.
+    /// </summary>
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<IEnumerable<InvoiceResponseDto>>>> GetAll()
@@ -29,6 +32,9 @@ public class InvoicesController : ControllerBase
         );
     }
 
+    /// <summary>
+    /// Updates an existing invoice with the specified identifier using the provided request data.
+    /// </summary>
     [HttpPut("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -59,6 +65,9 @@ public class InvoicesController : ControllerBase
         );
     }
 
+    /// <summary>
+    /// Updates the status of an existing invoice with the specified identifier.
+    /// </summary>
     [HttpPut("{id}/status")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -89,6 +98,9 @@ public class InvoicesController : ControllerBase
         );
     }
 
+    /// <summary>
+    /// Deletes an invoice with the specified identifier using a soft delete mechanism.
+    /// </summary>
     [HttpDelete("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -110,6 +122,9 @@ public class InvoicesController : ControllerBase
         );
     }
 
+    /// <summary>
+    /// Retrieves an invoice by the specified identifier.
+    /// </summary>
     [HttpGet("{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -131,6 +146,9 @@ public class InvoicesController : ControllerBase
         );
     }
 
+    /// <summary>
+    /// Creates a new invoice based on the provided request data.
+    /// </summary>
     [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
