@@ -43,6 +43,17 @@ public class CustomerService : ICustomerService
             return false;
         }
 
+        var hasInvoices = await _context.Invoices
+            .AnyAsync(i => i.CustomerId == id);
+
+        if (hasInvoices)
+        {
+            customer.DeletedAt = DateTimeOffset.UtcNow;
+            await this._context.SaveChangesAsync();
+
+            return true;
+        }
+
         this._context.Customers.Remove(customer);
 
         await this._context.SaveChangesAsync();
@@ -54,7 +65,7 @@ public class CustomerService : ICustomerService
     {
         var customers = await this._context
                                         .Customers
-                                        .Include(c => c.Invoices)
+                                        .Where(c => c.DeletedAt == null)
                                         .ToListAsync();
 
         return this._mapper.Map<IEnumerable<CustomerResponseDto>>(customers);
@@ -62,7 +73,9 @@ public class CustomerService : ICustomerService
 
     public async Task<CustomerResponseDto?> GetByIdAsync(int id)
     {
-        var customer = await this._context.Customers.FindAsync(id);
+        var customer = await this._context.Customers
+                                        .Where(c => c.Id == id && c.DeletedAt == null)
+                                        .FirstOrDefaultAsync();
 
         if (customer is null)
         {
@@ -76,8 +89,8 @@ public class CustomerService : ICustomerService
     {
         var updatedCustomer = await this._context
                                         .Customers
-                                        .Include(c => c.Invoices)
-                                        .FirstOrDefaultAsync(c => c.Id == id);
+                                        .Where(c => c.Id == id && c.DeletedAt == null)
+                                        .FirstOrDefaultAsync();
 
         if (updatedCustomer is null)
         {

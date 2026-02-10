@@ -1,17 +1,22 @@
 ﻿using Invoice_Manager_API.Common;
-using Invoice_Manager_API.DTO.CustomerDTO;
 using Invoice_Manager_API.DTO.InvoiceDTO;
 using Invoice_Manager_API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Invoice_Manager_API.Controllers;
 
+/// <summary>
+/// Invoice Controller.
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
 public class InvoicesController : ControllerBase
 {
     private IInvoiceService _invoiceService;
 
+    /// <summary>
+    /// Invoice Controller constructor.
+    /// </summary>
     public InvoicesController(IInvoiceService invoiceService)
     {
         this._invoiceService = invoiceService;

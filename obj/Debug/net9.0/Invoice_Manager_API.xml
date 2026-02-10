@@ -4,6 +4,16 @@
         <name>Invoice_Manager_API</name>
     </assembly>
     <members>
+        <member name="T:Invoice_Manager_API.Controllers.CustomersController">
+            <summary>
+            Customer Controller
+            </summary> 
+        </member>
+        <member name="M:Invoice_Manager_API.Controllers.CustomersController.#ctor(Invoice_Manager_API.Services.Interfaces.ICustomerService)">
+            <summary>
+            Customer Controller constructor
+            </summary> 
+        </member>
         <member name="M:Invoice_Manager_API.Controllers.CustomersController.GetAll">
             <summary>
             Retrieves a list of all customers in the system.
@@ -27,6 +37,16 @@
         <member name="M:Invoice_Manager_API.Controllers.CustomersController.Delete(System.Int32)">
             <summary>
             Deletes a customer with the specified identifier using a soft delete mechanism.
+            </summary>
+        </member>
+        <member name="T:Invoice_Manager_API.Controllers.InvoicesController">
+            <summary>
+            Invoice Controller.
+            </summary>
+        </member>
+        <member name="M:Invoice_Manager_API.Controllers.InvoicesController.#ctor(Invoice_Manager_API.Services.Interfaces.IInvoiceService)">
+            <summary>
+            Invoice Controller constructor.
             </summary>
         </member>
         <member name="M:Invoice_Manager_API.Controllers.InvoicesController.GetAll">

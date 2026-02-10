@@ -70,7 +70,7 @@ public class InvoiceService : IInvoiceService
     {
         var invoice = await this._context.Invoices.FindAsync(id);
 
-        if (invoice is null)
+        if (invoice is null || invoice.Status != InvoiceStatus.Created)
         {
             return false;
         }

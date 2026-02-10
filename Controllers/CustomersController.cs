@@ -1,17 +1,22 @@
 ﻿using Invoice_Manager_API.Common;
 using Invoice_Manager_API.DTO.CustomerDTO;
-using Invoice_Manager_API.Models;
 using Invoice_Manager_API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Invoice_Manager_API.Controllers;
 
+/// <summary>
+/// Customer Controller
+/// </summary> 
 [Route("api/[controller]")]
 [ApiController]
 public class CustomersController : ControllerBase
 {
     private ICustomerService _customerService;
 
+    /// <summary>
+    /// Customer Controller constructor
+    /// </summary> 
     public CustomersController(ICustomerService customerService)
     {
         this._customerService = customerService;
