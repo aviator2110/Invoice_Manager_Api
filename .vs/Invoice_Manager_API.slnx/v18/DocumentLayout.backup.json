@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{80254128-6910-05CA-9AE0-235458A69B36}|Invoice_Manager_API.csproj|c:\\users\\quram\\desktop\\programing\\invoice_manager_api\\services\\invoiceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80254128-6910-05CA-9AE0-235458A69B36}|Invoice_Manager_API.csproj|solutionrelative:services\\invoiceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{80254128-6910-05CA-9AE0-235458A69B36}|Invoice_Manager_API.csproj|c:\\users\\quram\\desktop\\programing\\invoice_manager_api\\dto\\invoicedto\\invoiceresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{80254128-6910-05CA-9AE0-235458A69B36}|Invoice_Manager_API.csproj|solutionrelative:dto\\invoicedto\\invoiceresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{80254128-6910-05CA-9AE0-235458A69B36}|Invoice_Manager_API.csproj|c:\\users\\quram\\desktop\\programing\\invoice_manager_api\\services\\customerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{80254128-6910-05CA-9AE0-235458A69B36}|Invoice_Manager_API.csproj|solutionrelative:services\\customerservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -20,10 +28,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{80254128-6910-05CA-9AE0-235458A69B36}|Invoice_Manager_API.csproj|c:\\users\\quram\\desktop\\programing\\invoice_manager_api\\dto\\customerdto\\customerupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{80254128-6910-05CA-9AE0-235458A69B36}|Invoice_Manager_API.csproj|solutionrelative:dto\\customerdto\\customerupdaterequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{80254128-6910-05CA-9AE0-235458A69B36}|Invoice_Manager_API.csproj|c:\\users\\quram\\desktop\\programing\\invoice_manager_api\\services\\invoiceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{80254128-6910-05CA-9AE0-235458A69B36}|Invoice_Manager_API.csproj|solutionrelative:services\\invoiceservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{80254128-6910-05CA-9AE0-235458A69B36}|Invoice_Manager_API.csproj|c:\\users\\quram\\desktop\\programing\\invoice_manager_api\\models\\customer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -70,10 +74,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{80254128-6910-05CA-9AE0-235458A69B36}|Invoice_Manager_API.csproj|c:\\users\\quram\\desktop\\programing\\invoice_manager_api\\dto\\invoicerowdto\\invoicerowresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{80254128-6910-05CA-9AE0-235458A69B36}|Invoice_Manager_API.csproj|solutionrelative:dto\\invoicerowdto\\invoicerowresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{80254128-6910-05CA-9AE0-235458A69B36}|Invoice_Manager_API.csproj|c:\\users\\quram\\desktop\\programing\\invoice_manager_api\\dto\\invoicedto\\invoiceresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{80254128-6910-05CA-9AE0-235458A69B36}|Invoice_Manager_API.csproj|solutionrelative:dto\\invoicedto\\invoiceresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{80254128-6910-05CA-9AE0-235458A69B36}|Invoice_Manager_API.csproj|c:\\users\\quram\\desktop\\programing\\invoice_manager_api\\models\\invoice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -123,21 +123,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "dbo.Customers [\u0414\u0430\u043D\u043D\u044B\u0435]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/InvoiceManagerDb/True/SqlTable/dbo.Customers.sql",
-              "ToolTip": "dbo.Customers [\u0414\u0430\u043D\u043D\u044B\u0435]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2026-02-10T07:49:55.564Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "CustomersController.cs",
               "DocumentMoniker": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\Controllers\\CustomersController.cs",
               "RelativeDocumentMoniker": "Controllers\\CustomersController.cs",
@@ -145,12 +135,11 @@
               "RelativeToolTip": "Controllers\\CustomersController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-03T07:46:26.959Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-03T07:46:26.959Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "InvoicesController.cs",
               "DocumentMoniker": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\Controllers\\InvoicesController.cs",
               "RelativeDocumentMoniker": "Controllers\\InvoicesController.cs",
@@ -158,12 +147,11 @@
               "RelativeToolTip": "Controllers\\InvoicesController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-03T10:53:10.082Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-03T10:53:10.082Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "IInvoiceService.cs",
               "DocumentMoniker": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\Services\\Interfaces\\IInvoiceService.cs",
               "RelativeDocumentMoniker": "Services\\Interfaces\\IInvoiceService.cs",
@@ -171,25 +159,24 @@
               "RelativeToolTip": "Services\\Interfaces\\IInvoiceService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T10:05:12.688Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T10:05:12.688Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "CustomerService.cs",
               "DocumentMoniker": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\Services\\CustomerService.cs",
               "RelativeDocumentMoniker": "Services\\CustomerService.cs",
-              "ToolTip": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\Services\\CustomerService.cs*",
-              "RelativeToolTip": "Services\\CustomerService.cs*",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAowF8AAAAJAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\Services\\CustomerService.cs",
+              "RelativeToolTip": "Services\\CustomerService.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAwwC8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-30T10:17:30.496Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "ICustomerService.cs",
               "DocumentMoniker": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\Services\\Interfaces\\ICustomerService.cs",
               "RelativeDocumentMoniker": "Services\\Interfaces\\ICustomerService.cs",
@@ -197,12 +184,11 @@
               "RelativeToolTip": "Services\\Interfaces\\ICustomerService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-30T10:04:55.432Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-30T10:04:55.432Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Customer.cs",
               "DocumentMoniker": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\Models\\Customer.cs",
               "RelativeDocumentMoniker": "Models\\Customer.cs",
@@ -210,25 +196,24 @@
               "RelativeToolTip": "Models\\Customer.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T07:58:55.312Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-28T07:58:55.312Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "InvoiceService.cs",
               "DocumentMoniker": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\Services\\InvoiceService.cs",
               "RelativeDocumentMoniker": "Services\\InvoiceService.cs",
               "ToolTip": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\Services\\InvoiceService.cs",
               "RelativeToolTip": "Services\\InvoiceService.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAowFcAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAG4AAAAAAAAAAAAowIAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-01-30T10:18:30.649Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "CustomerResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\DTO\\CustomerDTO\\CustomerResponseDto.cs",
               "RelativeDocumentMoniker": "DTO\\CustomerDTO\\CustomerResponseDto.cs",
@@ -236,12 +221,33 @@
               "RelativeToolTip": "DTO\\CustomerDTO\\CustomerResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-29T12:46:48.364Z",
+              "WhenOpened": "2026-01-29T12:46:48.364Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "InvoiceResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\DTO\\InvoiceDTO\\InvoiceResponseDto.cs",
+              "RelativeDocumentMoniker": "DTO\\InvoiceDTO\\InvoiceResponseDto.cs",
+              "ToolTip": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\DTO\\InvoiceDTO\\InvoiceResponseDto.cs",
+              "RelativeToolTip": "DTO\\InvoiceDTO\\InvoiceResponseDto.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T13:44:37.647Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 4,
+              "Title": "dbo.Customers.sql",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/InvoiceManagerDb/True/SqlTable/dbo.Customers.sql",
+              "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/InvoiceManagerDb/True/SqlTable/dbo.Customers.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2026-02-10T07:49:55.564Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Invoice_Manager_API.csproj",
               "DocumentMoniker": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\Invoice_Manager_API.csproj",
               "RelativeDocumentMoniker": "Invoice_Manager_API.csproj",
@@ -253,7 +259,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "CustomerUpdateRequest.cs",
               "DocumentMoniker": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\DTO\\CustomerDTO\\CustomerUpdateRequest.cs",
               "RelativeDocumentMoniker": "DTO\\CustomerDTO\\CustomerUpdateRequest.cs",
@@ -261,12 +267,11 @@
               "RelativeToolTip": "DTO\\CustomerDTO\\CustomerUpdateRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-29T12:37:29.015Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-29T12:37:29.015Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -278,7 +283,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -290,7 +295,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "InvoiceRowResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\DTO\\InvoiceRowDTO\\InvoiceRowResponseDto.cs",
               "RelativeDocumentMoniker": "DTO\\InvoiceRowDTO\\InvoiceRowResponseDto.cs",
@@ -302,19 +307,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "InvoiceResponseDto.cs",
-              "DocumentMoniker": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\DTO\\InvoiceDTO\\InvoiceResponseDto.cs",
-              "RelativeDocumentMoniker": "DTO\\InvoiceDTO\\InvoiceResponseDto.cs",
-              "ToolTip": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\DTO\\InvoiceDTO\\InvoiceResponseDto.cs",
-              "RelativeToolTip": "DTO\\InvoiceDTO\\InvoiceResponseDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-29T13:44:37.647Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "MappingProfile.cs",
               "DocumentMoniker": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\Mapping\\MappingProfile.cs",
               "RelativeDocumentMoniker": "Mapping\\MappingProfile.cs",
@@ -326,7 +319,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\appsettings.Development.json",
               "RelativeDocumentMoniker": "appsettings.Development.json",
@@ -350,7 +343,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "dbo.Invoices.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/InvoiceManagerDb/True/SqlTable/dbo.Invoices.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/InvoiceManagerDb/True/SqlTable/dbo.Invoices.sql",
@@ -359,7 +352,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "dbo.InvoiceRows.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/InvoiceManagerDb/True/SqlTable/dbo.InvoiceRows.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/InvoiceManagerDb/True/SqlTable/dbo.InvoiceRows.sql",

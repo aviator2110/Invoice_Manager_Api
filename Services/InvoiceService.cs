@@ -45,7 +45,7 @@ public class InvoiceService : IInvoiceService
     {
         var invoices = await this._context
             .Invoices
-            .Include(i => i.Customer)
+            .Where(i => i.DeletedAt == null)
             .Include(i => i.Rows)
             .ToListAsync();
 
@@ -56,7 +56,7 @@ public class InvoiceService : IInvoiceService
     {
         var invoice = await this._context.Invoices
             .Include(i => i.Rows)
-            .FirstOrDefaultAsync(i => i.Id == id);
+            .FirstOrDefaultAsync(i => i.Id == id && i.DeletedAt == null);
 
         if (invoice is null)
         {
@@ -68,17 +68,24 @@ public class InvoiceService : IInvoiceService
 
     public async Task<bool> DeleteAsync(int id)
     {
-        var invoice = await this._context.Invoices.FindAsync(id);
+        var invoice = await _context.Invoices
+            .FirstOrDefaultAsync(i => i.Id == id && i.DeletedAt == null);
 
-        if (invoice is null || invoice.Status != InvoiceStatus.Created)
+        if (invoice is null)
         {
             return false;
         }
 
-        this._context.Invoices.Remove(invoice);
+        if (invoice.Status != InvoiceStatus.Created)
+        {
+            invoice.DeletedAt = DateTimeOffset.UtcNow;
+        }
+        else
+        {
+            this._context.Invoices.Remove(invoice);
+        }
 
         await this._context.SaveChangesAsync();
-
         return true;
     }
 
@@ -88,7 +95,7 @@ public class InvoiceService : IInvoiceService
             .Invoices
             .Include(i => i.Rows)
             .Include(i => i.Customer)
-            .FirstOrDefaultAsync(i => i.Id == id);
+            .FirstOrDefaultAsync(i => i.Id == id && i.DeletedAt == null);
 
         if (updatedInvoice is null)
         {
@@ -106,9 +113,9 @@ public class InvoiceService : IInvoiceService
             .Invoices
             .Include(i => i.Rows)
             .Include(i => i.Customer)
-            .FirstOrDefaultAsync(i => i.Id == id);
+            .FirstOrDefaultAsync(i => i.Id == id && i.DeletedAt == null);
 
-        if (updatedInvoice is null)
+        if (updatedInvoice is null || updatedInvoice.Status != InvoiceStatus.Created)
         {
             return null;
         }
