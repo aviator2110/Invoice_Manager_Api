@@ -170,3 +170,6 @@ C:\Users\Quram\Desktop\programing\Invoice_Manager_API\obj\Debug\net9.0\ref\Invoi
 C:\Users\Quram\Desktop\programing\Invoice_Manager_API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
 C:\Users\Quram\Desktop\programing\Invoice_Manager_API\bin\Debug\net9.0\Invoice_Manager_API.xml
 C:\Users\Quram\Desktop\programing\Invoice_Manager_API\obj\Debug\net9.0\Invoice_Manager_API.xml
+C:\Users\Quram\Desktop\programing\Invoice_Manager_API\bin\Debug\net9.0\FluentValidation.dll
+C:\Users\Quram\Desktop\programing\Invoice_Manager_API\bin\Debug\net9.0\FluentValidation.AspNetCore.dll
+C:\Users\Quram\Desktop\programing\Invoice_Manager_API\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
