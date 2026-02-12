@@ -35,14 +35,17 @@ public class MappingProfile : Profile
 
         CreateMap<InvoiceCreateRequest, Invoice>()
             .ForMember(dest => dest.Id, opt => opt.Ignore())
-            .ForMember(dest => dest.TotalSum, opt => opt.MapFrom(src => src.Rows.Sum(r => r.Sum)))
+            .ForMember(dest => dest.Status, opt => opt.Ignore())
+            .ForMember(dest => dest.Rows, opt => opt.Ignore())
+            .ForMember(dest => dest.TotalSum, opt => opt.Ignore())
             .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => DateTime.UtcNow))
             .ForMember(dest => dest.UpdatedAt, opt => opt.Ignore())
             .ForMember(dest => dest.DeletedAt, opt => opt.Ignore());
 
         CreateMap<InvoiceUpdateRequest, Invoice>()
             .ForMember(dest => dest.Id, opt => opt.Ignore())
-            .ForMember(dest => dest.TotalSum, opt => opt.MapFrom(src => src.Rows.Sum(r => r.Sum)))
+            .ForMember(dest => dest.Rows, opt => opt.Ignore())
+            .ForMember(dest => dest.TotalSum, opt => opt.Ignore())
             .ForMember(dest => dest.Status, opt => opt.Ignore())
             .ForMember(dest => dest.CreatedAt, opt => opt.Ignore())
             .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(src => DateTime.UtcNow))

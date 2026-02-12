@@ -738,52 +738,6 @@
   },
   "components": {
     "schemas": {
-      "Customer": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "address": {
-            "type": "string",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "phoneNumber": {
-            "type": "string",
-            "nullable": true
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "deletedAt": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "invoices": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Invoice"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "CustomerCreateRequest": {
         "type": "object",
         "properties": {
@@ -890,62 +844,6 @@
         },
         "additionalProperties": false
       },
-      "Invoice": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "customerId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "startDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "endDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "rows": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/InvoiceRow"
-            },
-            "nullable": true
-          },
-          "totalSum": {
-            "type": "number",
-            "format": "double"
-          },
-          "comment": {
-            "type": "string",
-            "nullable": true
-          },
-          "status": {
-            "$ref": "#/components/schemas/InvoiceStatus"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "deletedAt": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "customer": {
-            "$ref": "#/components/schemas/Customer"
-          }
-        },
-        "additionalProperties": false
-      },
       "InvoiceCreateRequest": {
         "type": "object",
         "properties": {
@@ -961,19 +859,9 @@
             "type": "string",
             "format": "date-time"
           },
-          "rows": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/InvoiceRow"
-            },
-            "nullable": true
-          },
           "comment": {
             "type": "string",
             "nullable": true
-          },
-          "status": {
-            "$ref": "#/components/schemas/InvoiceStatus"
           }
         },
         "additionalProperties": false
@@ -1062,39 +950,6 @@
         },
         "additionalProperties": false
       },
-      "InvoiceRow": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "invoiceId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "service": {
-            "type": "string",
-            "nullable": true
-          },
-          "quantity": {
-            "type": "number",
-            "format": "double"
-          },
-          "rate": {
-            "type": "number",
-            "format": "double"
-          },
-          "sum": {
-            "type": "number",
-            "format": "double"
-          },
-          "invoice": {
-            "$ref": "#/components/schemas/Invoice"
-          }
-        },
-        "additionalProperties": false
-      },
       "InvoiceRowResponseDto": {
         "type": "object",
         "properties": {
@@ -1156,13 +1011,6 @@
           "endDate": {
             "type": "string",
             "format": "date-time"
-          },
-          "rows": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/InvoiceRow"
-            },
-            "nullable": true
           },
           "comment": {
             "type": "string",

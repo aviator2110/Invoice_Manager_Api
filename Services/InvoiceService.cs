@@ -21,7 +21,7 @@ public class InvoiceService : IInvoiceService
     public async Task<InvoiceResponseDto> CreateAsync(InvoiceCreateRequest request)
     {
         Invoice invoice = this._mapper.Map<Invoice>(request);
-
+        invoice.Status = InvoiceStatus.Created;
         invoice.TotalSum = invoice.Rows.Sum(r => r.Sum);
 
         this._context.Invoices.Add(invoice);
@@ -93,8 +93,6 @@ public class InvoiceService : IInvoiceService
     {
         var updatedInvoice = await this._context
             .Invoices
-            .Include(i => i.Rows)
-            .Include(i => i.Customer)
             .FirstOrDefaultAsync(i => i.Id == id && i.DeletedAt == null);
 
         if (updatedInvoice is null)
