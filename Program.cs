@@ -2,6 +2,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Invoice_Manager_API.Data;
 using Invoice_Manager_API.Mapping;
+using Invoice_Manager_API.Middlewares;
 using Invoice_Manager_API.Services;
 using Invoice_Manager_API.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
@@ -43,6 +44,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.MapOpenApi();
 }
+
+app.UseMiddleware<GlobalExceptionMiddleware>();
 
 app.UseAuthorization();
 
