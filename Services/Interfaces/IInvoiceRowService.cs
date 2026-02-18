@@ -5,8 +5,7 @@ namespace Invoice_Manager_API.Services.Interfaces;
 public interface IInvoiceRowService
 {
     Task<InvoiceRowResponseDto> CreateAsync(InvoiceRowCreateRequest request);
-    Task<InvoiceRowResponseDto?> UpdateAsync(InvoiceRowCreateRequest request);
-    Task<bool> DeleteAsync(int id);
+    Task<InvoiceRowResponseDto?> UpdateAsync(int id, InvoiceRowCreateRequest request);
     Task<InvoiceRowResponseDto?> GetByIdAsync(int id);
-    Task<IEnumerable<InvoiceRowResponseDto>> GetAllAsync();
+    Task<IEnumerable<InvoiceRowResponseDto>> GetAllByInvoiceIdAsync(int id);
 }

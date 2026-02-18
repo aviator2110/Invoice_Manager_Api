@@ -3,6 +3,7 @@ using Invoice_Manager_API.Data;
 using Invoice_Manager_API.DTO.InvoiceRowDTO;
 using Invoice_Manager_API.Models;
 using Invoice_Manager_API.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace Invoice_Manager_API.Services;
 
@@ -16,30 +17,57 @@ public class InvoiceRowService : IInvoiceRowService
         this._mapper = mapper;
     }
 
-    public Task<InvoiceRowResponseDto> CreateAsync(InvoiceRowCreateRequest request)
+    public async Task<InvoiceRowResponseDto> CreateAsync(InvoiceRowCreateRequest request)
     {
         var invoiceRow = this._mapper.Map<InvoiceRow>(request);
 
+        this._context.InvoiceRows.Add(invoiceRow);
 
+        await this._context.SaveChangesAsync();
+
+        await this._context
+            .Entry(invoiceRow)
+            .Reference(ir => ir.Invoice)
+            .LoadAsync();
+
+        return this._mapper.Map<InvoiceRowResponseDto>(invoiceRow);
     }
 
-    public Task<bool> DeleteAsync(int id)
+    public async Task<IEnumerable<InvoiceRowResponseDto>> GetAllByInvoiceIdAsync(int id)
     {
-        throw new NotImplementedException();
+        var invoiceRows = await this._context
+                                        .InvoiceRows
+                                        .Where(ir => ir.InvoiceId == id)
+                                        .ToListAsync();
+
+        return this._mapper.Map<IEnumerable<InvoiceRowResponseDto>>(invoiceRows);
     }
 
-    public Task<IEnumerable<InvoiceRowResponseDto>> GetAllAsync()
+    public async Task<InvoiceRowResponseDto?> GetByIdAsync(int id)
     {
-        throw new NotImplementedException();
+        var invoiceRow = await this._context
+                                        .InvoiceRows
+                                        .Where(ir => ir.Id == id)
+                                        .FirstOrDefaultAsync();
+
+        if (invoiceRow == null)
+            return null;
+
+        return this._mapper.Map<InvoiceRowResponseDto>(invoiceRow);
     }
 
-    public Task<InvoiceRowResponseDto?> GetByIdAsync(int id)
+    public async Task<InvoiceRowResponseDto?> UpdateAsync(int id, InvoiceRowCreateRequest request)
     {
-        throw new NotImplementedException();
-    }
+        var updatedInvoiceRow = await this._context
+                                            .InvoiceRows
+                                            .Where(ir => ir.Id == id)
+                                            .FirstOrDefaultAsync();
 
-    public Task<InvoiceRowResponseDto?> UpdateAsync(InvoiceRowCreateRequest request)
-    {
-        throw new NotImplementedException();
+        if (updatedInvoiceRow == null)
+            return null;
+
+        this._mapper.Map(request, updatedInvoiceRow);
+
+        return this._mapper.Map<InvoiceRowResponseDto>(updatedInvoiceRow);
     }
 }
