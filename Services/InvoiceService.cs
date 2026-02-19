@@ -102,6 +102,8 @@ public class InvoiceService : IInvoiceService
 
         this._mapper.Map(request, updatedInvoice);
 
+        await _context.SaveChangesAsync();
+
         return this._mapper.Map<InvoiceResponseDto>(updatedInvoice);
     }
 
@@ -118,9 +120,10 @@ public class InvoiceService : IInvoiceService
             return null;
         }
 
-        updatedInvoice.TotalSum = updatedInvoice.Rows.Sum(r => r.Sum);
-
         this._mapper.Map(request, updatedInvoice);
+
+        updatedInvoice.TotalSum = updatedInvoice.Rows.Sum(r => r.Sum);
+        await _context.SaveChangesAsync();
 
         return this._mapper.Map<InvoiceResponseDto>(updatedInvoice);
     }

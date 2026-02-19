@@ -36,7 +36,9 @@ public class CustomerService : ICustomerService
 
     public async Task<bool> DeleteAsync(int id)
     {
-        var customer = await this._context.Customers.FindAsync(id);
+        var customer = await this._context
+                                .Customers
+                                .FirstOrDefaultAsync(c => c.Id == id && c.DeletedAt == null);
 
         if (customer is null)
         {
@@ -98,6 +100,8 @@ public class CustomerService : ICustomerService
         }
 
         this._mapper.Map(request, updatedCustomer);
+
+        await _context.SaveChangesAsync();
 
         return this._mapper.Map<CustomerResponseDto>(updatedCustomer);
     }

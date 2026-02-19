@@ -56,7 +56,7 @@ public class InvoiceRowService : IInvoiceRowService
         return this._mapper.Map<InvoiceRowResponseDto>(invoiceRow);
     }
 
-    public async Task<InvoiceRowResponseDto?> UpdateAsync(int id, InvoiceRowCreateRequest request)
+    public async Task<InvoiceRowResponseDto?> UpdateAsync(int id, InvoiceRowUpdateRequest request)
     {
         var updatedInvoiceRow = await this._context
                                             .InvoiceRows
@@ -67,6 +67,8 @@ public class InvoiceRowService : IInvoiceRowService
             return null;
 
         this._mapper.Map(request, updatedInvoiceRow);
+
+        await _context.SaveChangesAsync();
 
         return this._mapper.Map<InvoiceRowResponseDto>(updatedInvoiceRow);
     }
