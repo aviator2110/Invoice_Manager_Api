@@ -1,4 +1,5 @@
-﻿using Invoice_Manager_API.DTO.CustomerDTO;
+﻿using Invoice_Manager_API.Common;
+using Invoice_Manager_API.DTO.CustomerDTO;
 
 namespace Invoice_Manager_API.Services.Interfaces;
 
@@ -9,4 +10,5 @@ public interface ICustomerService
 	Task<bool> DeleteAsync(int id);
 	Task<IEnumerable<CustomerResponseDto>> GetAllAsync();
 	Task<CustomerResponseDto?> GetByIdAsync(int id);
+	Task<PagedResult<CustomerResponseDto>> GetPagedAsync(CustomerQueryParams queryParams);
 }

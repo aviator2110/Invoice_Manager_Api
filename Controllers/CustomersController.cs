@@ -25,7 +25,7 @@ public class CustomersController : ControllerBase
     /// <summary>
     /// Retrieves a list of all customers in the system.
     /// </summary>
-    [HttpGet]
+    [HttpGet("all")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<IEnumerable<CustomerResponseDto>>>> GetAll()
     {
@@ -34,6 +34,18 @@ public class CustomersController : ControllerBase
         return Ok(
             ApiResponse<IEnumerable<CustomerResponseDto>>
                 .SuccessResponse(customers, "Customers retrieved successfully")
+        );
+    }
+
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<ActionResult<ApiResponse<PagedResult<IEnumerable<CustomerResponseDto>>>>> GetPaged([FromQuery] CustomerQueryParams queryParams)
+    {
+        var result = await _customerService.GetPagedAsync(queryParams);
+
+        return Ok(
+            ApiResponse<PagedResult<CustomerResponseDto>>
+                .SuccessResponse(result, "Customers retrieved successfully")
         );
     }
 

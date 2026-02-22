@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Invoice_Manager_API.Common;
 using Invoice_Manager_API.Data;
 using Invoice_Manager_API.DTO.CustomerDTO;
 using Invoice_Manager_API.Models;
@@ -87,6 +88,52 @@ public class CustomerService : ICustomerService
         return this._mapper.Map<CustomerResponseDto>(customer);
     }
 
+    public async Task<PagedResult<CustomerResponseDto>> GetPagedAsync(CustomerQueryParams queryParams)
+    {
+        queryParams.Validate();
+
+        var query = this._context
+                        .Customers
+                        .Include(c => c.Invoices)
+                        .AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(queryParams.Name))
+            query = query.Where(c => c.Name == queryParams.Name);
+
+        if (!string.IsNullOrWhiteSpace(queryParams.Search))
+        {
+            var searchTerm = queryParams.Search.ToLower();
+
+            query = query.Where(c => c.Name.ToLower() == searchTerm
+                                    || c.Address!.ToLower() == searchTerm
+                                    || c.Email.ToLower() == searchTerm
+                                    || c.PhoneNumber!.ToLower() == searchTerm);
+        }
+
+        if (!string.IsNullOrWhiteSpace(queryParams.Sort))
+            query = ApplySorting(query, queryParams.Sort, queryParams.SortDirection!);
+        else
+            query = query.OrderByDescending(t => t.CreatedAt);
+
+        var totalCount = await this._context.Customers.CountAsync();
+
+        var skip = (queryParams.Page - 1) * queryParams.PageSize;
+
+        var resultCustomers = await query
+                                    .Skip(skip)
+                                    .Take(queryParams.PageSize)
+                                    .ToListAsync();
+
+        var customerDtos = this._mapper.Map<IEnumerable<CustomerResponseDto>>(resultCustomers);
+
+        return PagedResult<CustomerResponseDto>.Create(
+                customerDtos,
+                queryParams.Page,
+                queryParams.PageSize,
+                totalCount
+            );
+    }
+
     public async Task<CustomerResponseDto?> UpdateAsync(int id, CustomerUpdateRequest request)
     {
         var updatedCustomer = await this._context
@@ -104,5 +151,34 @@ public class CustomerService : ICustomerService
         await _context.SaveChangesAsync();
 
         return this._mapper.Map<CustomerResponseDto>(updatedCustomer);
+    }
+
+    private IQueryable<Customer> ApplySorting(
+                                        IQueryable<Customer> query,
+                                        string sort,
+                                        string sortDirection)
+    {
+        var isDescending = sortDirection?.ToLower() == "desc";
+
+        return sort.ToLower() switch
+        {
+            "name" => isDescending
+                            ? query.OrderByDescending(c => c.Name)
+                            : query.OrderBy(c => c.Name),
+
+            "createdat" => isDescending
+                            ? query.OrderByDescending(c => c.CreatedAt)
+                            : query.OrderBy(c => c.CreatedAt),
+
+            "email" => isDescending
+                            ? query.OrderByDescending(c => c.Email)
+                            : query.OrderBy(c => c.Email),
+
+            "address" => isDescending
+                            ? query.OrderByDescending(c => c.Address)
+                            : query.OrderBy(c => c.Address),
+
+            _ => query.OrderByDescending(c => c.CreatedAt)
+        };
     }
 }
