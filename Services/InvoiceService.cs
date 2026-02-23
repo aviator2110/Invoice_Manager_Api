@@ -160,6 +160,10 @@ public class InvoiceService : IInvoiceService
 
         var totalCount = await this._context.Invoices.CountAsync();
 
+        var maxPages = Convert.ToInt32(Math.Ceiling(totalCount / (double)queryParams.PageSize));
+        if (queryParams.Page > maxPages)
+            queryParams.Page = maxPages;
+
         var skip = (queryParams.Page - 1) * queryParams.PageSize;
 
         var resultInvoices = await query
@@ -210,7 +214,7 @@ public class InvoiceService : IInvoiceService
                             ? query.OrderByDescending(i => i.Status)
                             : query.OrderBy(i => i.Status),
 
-            _ => query.OrderByDescending(c => c.CreatedAt)
+            _ => query.OrderByDescending(i => i.CreatedAt)
         };
     }
 }

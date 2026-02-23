@@ -396,7 +396,7 @@
         }
       }
     },
-    "/Invoice/{id}": {
+    "/api/InvoiceRows/invoice/{id}": {
       "get": {
         "tags": [
           "InvoiceRows"
@@ -406,35 +406,14 @@
           {
             "name": "id",
             "in": "path",
+            "description": "The identifier of the invoice.",
             "required": true,
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "format": "int32"
             }
           }
         ],
-        "requestBody": {
-          "description": "The identifier of the invoice.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "type": "integer",
-                "format": "int32"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK",
@@ -452,6 +431,158 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/InvoiceRowResponseDtoIEnumerableApiResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/InvoiceRows": {
+      "get": {
+        "tags": [
+          "InvoiceRows"
+        ],
+        "summary": "Retrieves a paginated list of invoice rows based on the specified query parameters.",
+        "parameters": [
+          {
+            "name": "Page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "Sort",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "SortDirection",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Service",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "InvoiceId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceRowResponseDtoIEnumerablePagedResultApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceRowResponseDtoIEnumerablePagedResultApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceRowResponseDtoIEnumerablePagedResultApiResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "InvoiceRows"
+        ],
+        "summary": "Creates a new invoice row.",
+        "requestBody": {
+          "description": "The invoice row creation request data.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceRowCreateRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceRowCreateRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InvoiceRowCreateRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceRowResponseDtoApiResponse"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceRowResponseDtoApiResponse"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InvoiceRowResponseDtoApiResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -521,76 +652,6 @@
           },
           "404": {
             "description": "Not Found",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/InvoiceRows": {
-      "post": {
-        "tags": [
-          "InvoiceRows"
-        ],
-        "summary": "Creates a new invoice row.",
-        "requestBody": {
-          "description": "The invoice row creation request data.",
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/InvoiceRowCreateRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/InvoiceRowCreateRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/InvoiceRowCreateRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/InvoiceRowResponseDtoApiResponse"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InvoiceRowResponseDtoApiResponse"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/InvoiceRowResponseDtoApiResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
             "content": {
               "text/plain": {
                 "schema": {
@@ -1571,6 +1632,10 @@
             "type": "integer",
             "format": "int32"
           },
+          "invoiceId": {
+            "type": "integer",
+            "format": "int32"
+          },
           "service": {
             "type": "string",
             "nullable": true
@@ -1622,6 +1687,63 @@
               "$ref": "#/components/schemas/InvoiceRowResponseDto"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InvoiceRowResponseDtoIEnumerablePagedResult": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/components/schemas/InvoiceRowResponseDto"
+              }
+            },
+            "nullable": true
+          },
+          "page": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "totalPages": {
+            "type": "integer",
+            "format": "int32",
+            "readOnly": true
+          },
+          "hasPrevious": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "hasNext": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "InvoiceRowResponseDtoIEnumerablePagedResultApiResponse": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/InvoiceRowResponseDtoIEnumerablePagedResult"
           }
         },
         "additionalProperties": false

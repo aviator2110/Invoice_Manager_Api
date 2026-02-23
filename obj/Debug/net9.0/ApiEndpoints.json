@@ -266,6 +266,62 @@
   },
   {
     "ContainingType": "Invoice_Manager_API.Controllers.InvoiceRowsController",
+    "Method": "GetPaged",
+    "RelativePath": "api/InvoiceRows",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Page",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Sort",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SortDirection",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Service",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "InvoiceId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Invoice_Manager_API.Common.ApiResponse\u00601[[Invoice_Manager_API.Common.PagedResult\u00601[[System.Collections.Generic.IEnumerable\u00601[[Invoice_Manager_API.DTO.InvoiceRowDTO.InvoiceRowResponseDto, Invoice_Manager_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], Invoice_Manager_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Invoice_Manager_API.Controllers.InvoiceRowsController",
     "Method": "Create",
     "RelativePath": "api/InvoiceRows",
     "HttpMethod": "POST",
@@ -345,6 +401,32 @@
           "text/json"
         ],
         "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "Invoice_Manager_API.Controllers.InvoiceRowsController",
+    "Method": "GetAllByInvoiceId",
+    "RelativePath": "api/InvoiceRows/invoice/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Invoice_Manager_API.Common.ApiResponse\u00601[[System.Collections.Generic.IEnumerable\u00601[[Invoice_Manager_API.DTO.InvoiceRowDTO.InvoiceRowResponseDto, Invoice_Manager_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
       }
     ]
   },
@@ -618,37 +700,6 @@
     "ReturnTypes": [
       {
         "Type": "Invoice_Manager_API.Common.ApiResponse\u00601[[System.Collections.Generic.IEnumerable\u00601[[Invoice_Manager_API.DTO.InvoiceDTO.InvoiceResponseDto, Invoice_Manager_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "Invoice_Manager_API.Controllers.InvoiceRowsController",
-    "Method": "GetAllByInvoiceId",
-    "RelativePath": "Invoice/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "id",
-        "Type": "",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "Invoice_Manager_API.Common.ApiResponse\u00601[[System.Collections.Generic.IEnumerable\u00601[[Invoice_Manager_API.DTO.InvoiceRowDTO.InvoiceRowResponseDto, Invoice_Manager_API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "MediaTypes": [
           "text/plain",
           "application/json",

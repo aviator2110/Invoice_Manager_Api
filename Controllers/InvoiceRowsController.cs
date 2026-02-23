@@ -1,5 +1,6 @@
 ﻿using Invoice_Manager_API.Common;
 using Invoice_Manager_API.DTO.CustomerDTO;
+using Invoice_Manager_API.DTO.InvoiceDTO;
 using Invoice_Manager_API.DTO.InvoiceRowDTO;
 using Invoice_Manager_API.Models;
 using Invoice_Manager_API.Services.Interfaces;
@@ -24,16 +25,39 @@ public class InvoiceRowsController : ControllerBase
     /// </summary>
     /// <param name="id">The identifier of the invoice.</param>
     /// <returns>A list of invoice rows for the specified invoice.</returns>
-    [HttpGet("/Invoice/{id}")]
+    [HttpGet("invoice/{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<ApiResponse<IEnumerable<InvoiceRowResponseDto>>>> GetAllByInvoiceId([FromBody]int id)
+    public async Task<ActionResult<ApiResponse<IEnumerable<InvoiceRowResponseDto>>>>
+    GetAllByInvoiceId(int id)
     {
         var invoiceRows = await this._invoiceRowService.GetAllByInvoiceIdAsync(id);
 
         return Ok(
-                ApiResponse<IEnumerable<InvoiceRowResponseDto>>
-                    .SuccessResponse(invoiceRows, $"Invoice rows with invoice id {id} retrieved successfully")
-            );
+            ApiResponse<IEnumerable<InvoiceRowResponseDto>>
+                .SuccessResponse(invoiceRows,
+                    $"Invoice rows with invoice id {id} retrieved successfully")
+        );
+    }
+
+    /// <summary>
+    /// Retrieves a paginated list of invoice rows based on the specified query parameters.
+    /// </summary>
+    /// <param name="queryParams">
+    /// The filtering, sorting, and pagination parameters for retrieving invoice rows.
+    /// </param>
+    /// <returns>
+    /// A paginated result containing invoice rows that match the provided query parameters.
+    /// </returns>
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<ActionResult<ApiResponse<PagedResult<IEnumerable<InvoiceRowResponseDto>>>>> GetPaged([FromQuery] InvoiceRowQueryParams queryParams)
+    {
+        var result = await this._invoiceRowService.GetPagedAsync(queryParams);
+
+        return Ok(
+            ApiResponse<PagedResult<InvoiceRowResponseDto>>
+                .SuccessResponse(result, "Invoice rows retrieved successfully")
+        );
     }
 
     /// <summary>

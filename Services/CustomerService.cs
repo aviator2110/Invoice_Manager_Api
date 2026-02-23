@@ -117,6 +117,10 @@ public class CustomerService : ICustomerService
 
         var totalCount = await this._context.Customers.CountAsync();
 
+        var maxPages = Convert.ToInt32(Math.Ceiling(totalCount / (double)queryParams.PageSize));
+        if (queryParams.Page > maxPages)
+            queryParams.Page = maxPages;
+
         var skip = (queryParams.Page - 1) * queryParams.PageSize;
 
         var resultCustomers = await query
