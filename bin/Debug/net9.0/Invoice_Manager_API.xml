@@ -19,6 +19,17 @@
             Retrieves a list of all customers in the system.
             </summary>
         </member>
+        <member name="M:Invoice_Manager_API.Controllers.CustomersController.GetPaged(Invoice_Manager_API.DTO.CustomerDTO.CustomerQueryParams)">
+            <summary>
+            Retrieves a paginated list of customers based on the specified query parameters.
+            </summary>
+            <param name="queryParams">
+            The filtering, sorting, and pagination parameters.
+            </param>
+            <returns>
+            A paginated result containing customers that match the provided query parameters.
+            </returns>
+        </member>
         <member name="M:Invoice_Manager_API.Controllers.CustomersController.GetById(System.Int32)">
             <summary>
             Retrieves a customer by the specified identifier.
@@ -39,6 +50,35 @@
             Deletes a customer with the specified identifier using a soft delete mechanism.
             </summary>
         </member>
+        <member name="M:Invoice_Manager_API.Controllers.InvoiceRowsController.GetAllByInvoiceId(System.Int32)">
+            <summary>
+            Retrieves all invoice rows associated with the specified invoice ID.
+            </summary>
+            <param name="id">The identifier of the invoice.</param>
+            <returns>A list of invoice rows for the specified invoice.</returns>
+        </member>
+        <member name="M:Invoice_Manager_API.Controllers.InvoiceRowsController.GetById(System.Int32)">
+            <summary>
+            Retrieves a specific invoice row by its unique identifier.
+            </summary>
+            <param name="id">The identifier of the invoice row.</param>
+            <returns>The invoice row if found; otherwise, a 404 Not Found response.</returns>
+        </member>
+        <member name="M:Invoice_Manager_API.Controllers.InvoiceRowsController.Create(Invoice_Manager_API.DTO.InvoiceRowDTO.InvoiceRowCreateRequest)">
+            <summary>
+            Creates a new invoice row.
+            </summary>
+            <param name="request">The invoice row creation request data.</param>
+            <returns>The newly created invoice row with a 201 Created response.</returns>
+        </member>
+        <member name="M:Invoice_Manager_API.Controllers.InvoiceRowsController.Update(Invoice_Manager_API.DTO.InvoiceRowDTO.InvoiceRowUpdateRequest,System.Int32)">
+            <summary>
+            Updates an existing invoice row by its identifier.
+            </summary>
+            <param name="id">The identifier of the invoice row to update.</param>
+            <param name="request">The updated invoice row data.</param>
+            <returns>The updated invoice row if found; otherwise, a 404 Not Found response.</returns>
+        </member>
         <member name="T:Invoice_Manager_API.Controllers.InvoicesController">
             <summary>
             Invoice Controller.
@@ -53,6 +93,17 @@
             <summary>
             Retrieves a list of all invoices in the system.
             </summary>
+        </member>
+        <member name="M:Invoice_Manager_API.Controllers.InvoicesController.GetPaged(Invoice_Manager_API.DTO.InvoiceDTO.InvoiceQueryParams)">
+            <summary>
+            Retrieves a paginated list of invoices based on the specified query parameters.
+            </summary>
+            <param name="queryParams">
+            The filtering, sorting, and pagination parameters for retrieving invoices.
+            </param>
+            <returns>
+            A paginated result containing invoices that match the provided query parameters.
+            </returns>
         </member>
         <member name="M:Invoice_Manager_API.Controllers.InvoicesController.Update(Invoice_Manager_API.DTO.InvoiceDTO.InvoiceUpdateRequest,System.Int32)">
             <summary>

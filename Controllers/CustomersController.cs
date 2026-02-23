@@ -37,11 +37,20 @@ public class CustomersController : ControllerBase
         );
     }
 
+    /// <summary>
+    /// Retrieves a paginated list of customers based on the specified query parameters.
+    /// </summary>
+    /// <param name="queryParams">
+    /// The filtering, sorting, and pagination parameters.
+    /// </param>
+    /// <returns>
+    /// A paginated result containing customers that match the provided query parameters.
+    /// </returns>
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<PagedResult<IEnumerable<CustomerResponseDto>>>>> GetPaged([FromQuery] CustomerQueryParams queryParams)
     {
-        var result = await _customerService.GetPagedAsync(queryParams);
+        var result = await this._customerService.GetPagedAsync(queryParams);
 
         return Ok(
             ApiResponse<PagedResult<CustomerResponseDto>>

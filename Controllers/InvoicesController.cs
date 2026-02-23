@@ -1,5 +1,7 @@
 ﻿using Invoice_Manager_API.Common;
+using Invoice_Manager_API.DTO.CustomerDTO;
 using Invoice_Manager_API.DTO.InvoiceDTO;
+using Invoice_Manager_API.Services;
 using Invoice_Manager_API.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,7 +27,7 @@ public class InvoicesController : ControllerBase
     /// <summary>
     /// Retrieves a list of all invoices in the system.
     /// </summary>
-    [HttpGet]
+    [HttpGet("all")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     public async Task<ActionResult<ApiResponse<IEnumerable<InvoiceResponseDto>>>> GetAll()
     {
@@ -34,6 +36,27 @@ public class InvoicesController : ControllerBase
         return Ok(
             ApiResponse<IEnumerable<InvoiceResponseDto>>
                 .SuccessResponse(invoices, "Invoices retrieved successfully")
+        );
+    }
+
+    /// <summary>
+    /// Retrieves a paginated list of invoices based on the specified query parameters.
+    /// </summary>
+    /// <param name="queryParams">
+    /// The filtering, sorting, and pagination parameters for retrieving invoices.
+    /// </param>
+    /// <returns>
+    /// A paginated result containing invoices that match the provided query parameters.
+    /// </returns>
+    [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    public async Task<ActionResult<ApiResponse<PagedResult<IEnumerable<InvoiceResponseDto>>>>> GetPaged([FromQuery] InvoiceQueryParams queryParams)
+    {
+        var result = await this._invoiceService.GetPagedAsync(queryParams);
+
+        return Ok(
+            ApiResponse<PagedResult<InvoiceResponseDto>>
+                .SuccessResponse(result, "Invoices retrieved successfully")
         );
     }
 

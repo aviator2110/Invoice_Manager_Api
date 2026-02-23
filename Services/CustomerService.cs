@@ -98,22 +98,22 @@ public class CustomerService : ICustomerService
                         .AsQueryable();
 
         if (!string.IsNullOrWhiteSpace(queryParams.Name))
-            query = query.Where(c => c.Name == queryParams.Name);
+            query = query.Where(c => c.Name.Contains(queryParams.Name));
 
         if (!string.IsNullOrWhiteSpace(queryParams.Search))
         {
             var searchTerm = queryParams.Search.ToLower();
 
-            query = query.Where(c => c.Name.ToLower() == searchTerm
-                                    || c.Address!.ToLower() == searchTerm
-                                    || c.Email.ToLower() == searchTerm
-                                    || c.PhoneNumber!.ToLower() == searchTerm);
+            query = query.Where(c => c.Name.ToLower().Contains(searchTerm)
+                                    || c.Address!.ToLower().Contains(searchTerm)
+                                    || c.Email.ToLower().Contains(searchTerm)
+                                    || c.PhoneNumber!.ToLower().Contains(searchTerm));
         }
 
         if (!string.IsNullOrWhiteSpace(queryParams.Sort))
             query = ApplySorting(query, queryParams.Sort, queryParams.SortDirection!);
         else
-            query = query.OrderByDescending(t => t.CreatedAt);
+            query = query.OrderByDescending(c => c.CreatedAt);
 
         var totalCount = await this._context.Customers.CountAsync();
 
@@ -127,11 +127,11 @@ public class CustomerService : ICustomerService
         var customerDtos = this._mapper.Map<IEnumerable<CustomerResponseDto>>(resultCustomers);
 
         return PagedResult<CustomerResponseDto>.Create(
-                customerDtos,
-                queryParams.Page,
-                queryParams.PageSize,
-                totalCount
-            );
+                                                        customerDtos,
+                                                        queryParams.Page,
+                                                        queryParams.PageSize,
+                                                        totalCount
+                                                    );
     }
 
     public async Task<CustomerResponseDto?> UpdateAsync(int id, CustomerUpdateRequest request)

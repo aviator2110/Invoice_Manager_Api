@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Quram\\Desktop\\program\\Invoice_Manager_Api\\Invoice_Manager_API.csproj": {}
+    "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\Invoice_Manager_API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Quram\\Desktop\\program\\Invoice_Manager_Api\\Invoice_Manager_API.csproj": {
+    "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\Invoice_Manager_API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Quram\\Desktop\\program\\Invoice_Manager_Api\\Invoice_Manager_API.csproj",
+        "projectUniqueName": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\Invoice_Manager_API.csproj",
         "projectName": "Invoice_Manager_API",
-        "projectPath": "C:\\Users\\Quram\\Desktop\\program\\Invoice_Manager_Api\\Invoice_Manager_API.csproj",
+        "projectPath": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\Invoice_Manager_API.csproj",
         "packagesPath": "C:\\Users\\Quram\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Quram\\Desktop\\program\\Invoice_Manager_Api\\obj\\",
+        "outputPath": "C:\\Users\\Quram\\Desktop\\programing\\Invoice_Manager_API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "F:\\Programms\\VS2022(SDK)\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
           "C:\\Users\\Quram\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -100,6 +100,24 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[9.0.13, 9.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x64",
+              "version": "[9.0.13, 9.0.13]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[9.0.13, 9.0.13]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[9.0.13, 9.0.13]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
