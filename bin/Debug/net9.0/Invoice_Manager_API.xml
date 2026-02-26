@@ -153,5 +153,17 @@
         <member name="M:Invoice_Manager_API.Migrations.Init.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:Invoice_Manager_API.Migrations.AddApplicationUser">
+            <inheritdoc />
+        </member>
+        <member name="M:Invoice_Manager_API.Migrations.AddApplicationUser.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Invoice_Manager_API.Migrations.AddApplicationUser.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Invoice_Manager_API.Migrations.AddApplicationUser.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

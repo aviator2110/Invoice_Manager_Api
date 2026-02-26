@@ -1,11 +1,10 @@
 ﻿using Invoice_Manager_API.Models;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
-using System.Net.NetworkInformation;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Invoice_Manager_API.Data;
 
-public class InvoiceManagerApiDbContext : DbContext
+public class InvoiceManagerApiDbContext : IdentityDbContext<ApplicationUser>
 {
     public InvoiceManagerApiDbContext(DbContextOptions<InvoiceManagerApiDbContext> options) : base(options)
     {
@@ -18,6 +17,22 @@ public class InvoiceManagerApiDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<ApplicationUser>(user =>
+        {
+            user.Property(u => u.FirstName)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            user.Property(u => u.LastName)
+                .IsRequired()
+                .HasMaxLength(100);
+
+            user.Property(u => u.CreatedAt)
+                .IsRequired();
+
+            user.Property(u => u.UpdatedAt);
+        });
 
         modelBuilder.Entity<Customer>(
             customer =>
