@@ -3,6 +3,7 @@ using Invoice_Manager_API.DTO.CustomerDTO;
 using Invoice_Manager_API.DTO.InvoiceDTO;
 using Invoice_Manager_API.Services;
 using Invoice_Manager_API.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Invoice_Manager_API.Controllers;
@@ -50,6 +51,7 @@ public class InvoicesController : ControllerBase
     /// </returns>
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [Authorize]
     public async Task<ActionResult<ApiResponse<PagedResult<IEnumerable<InvoiceResponseDto>>>>> GetPaged([FromQuery] InvoiceQueryParams queryParams)
     {
         var result = await this._invoiceService.GetPagedAsync(queryParams);

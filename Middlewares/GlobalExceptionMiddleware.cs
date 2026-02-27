@@ -32,35 +32,44 @@ public class GlobalExceptionMiddleware
     {
         _logger.LogError(ex, "Unhandled exception occured while processing request");
 
-        ProblemDetails problem;
-        int statusCode;
+        context.Response.ContentType = "application/json+problem";
 
-        switch (ex)
+        var (statusCode, problem) = ex switch
         {
-            case ValidationException validationException:
-                statusCode = (int)HttpStatusCode.BadRequest;
-                problem = CreateValidationProblemDetails(context, validationException, statusCode);
-                break;
-            case KeyNotFoundException:
-                statusCode = (int)HttpStatusCode.NotFound;
-                problem = CreateProblemDetails(context, statusCode, "Resource not found", ex.Message);
-                break;
-            case ArgumentException:
-                statusCode = (int)HttpStatusCode.BadRequest;
-                problem = CreateProblemDetails(context, statusCode, "Invalid Request", ex.Message);
-                break;
-            default:
-                statusCode = (int)HttpStatusCode.InternalServerError;
-                problem = CreateProblemDetails(context, statusCode, "An unxpected error occured", "An unxpected error occured while processing request");
-                break;
-        }
+            ValidationException validationException => (
+                400,
+                CreateValidationProblemDetails(context, validationException, 400)
+            ),
+
+            KeyNotFoundException => (
+                404,
+                CreateProblemDetails(context, 404, "Resource not found", ex.Message)
+            ),
+
+            ArgumentException => (
+                400,
+                CreateProblemDetails(context, 400, "Invalid Request", ex.Message)
+            ),
+
+            UnauthorizedAccessException => (
+                401,
+                CreateProblemDetails(context, 401, "User unauthorized", ex.Message)
+            ),
+
+            InvalidOperationException => (
+                400,
+                CreateProblemDetails(context, 400, "Invalid rquest", ex.Message)
+            ),
+
+            _ => (
+                500,
+                CreateProblemDetails(context, 500, "An unxpected error occured", "An unxpected error occured while processing request")
+            )
+        };
 
         context.Response.StatusCode = statusCode;
 
-        var json = JsonSerializer.Serialize(problem, new JsonSerializerOptions
-        {
-            WriteIndented = true
-        });
+        var json = JsonSerializer.Serialize(problem);
 
         await context.Response.WriteAsync(json);
     }

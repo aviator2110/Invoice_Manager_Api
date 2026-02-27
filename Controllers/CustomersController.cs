@@ -1,6 +1,7 @@
 ﻿using Invoice_Manager_API.Common;
 using Invoice_Manager_API.DTO.CustomerDTO;
 using Invoice_Manager_API.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Invoice_Manager_API.Controllers;
@@ -10,6 +11,7 @@ namespace Invoice_Manager_API.Controllers;
 /// </summary> 
 [Route("api/[controller]")]
 [ApiController]
+[Authorize]
 public class CustomersController : ControllerBase
 {
     private ICustomerService _customerService;

@@ -4,6 +4,7 @@ using Invoice_Manager_API.DTO.InvoiceDTO;
 using Invoice_Manager_API.DTO.InvoiceRowDTO;
 using Invoice_Manager_API.Models;
 using Invoice_Manager_API.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,6 +28,7 @@ public class InvoiceRowsController : ControllerBase
     /// <returns>A list of invoice rows for the specified invoice.</returns>
     [HttpGet("invoice/{id}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
+    [Authorize]
     public async Task<ActionResult<ApiResponse<IEnumerable<InvoiceRowResponseDto>>>>
     GetAllByInvoiceId(int id)
     {

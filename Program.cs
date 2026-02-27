@@ -3,8 +3,10 @@ using FluentValidation.AspNetCore;
 using Invoice_Manager_API.Data;
 using Invoice_Manager_API.Mapping;
 using Invoice_Manager_API.Middlewares;
+using Invoice_Manager_API.Models;
 using Invoice_Manager_API.Services;
 using Invoice_Manager_API.Services.Interfaces;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -26,6 +28,9 @@ builder.Services.AddSwaggerGen(options =>
 
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
+
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<InvoiceManagerApiDbContext>();
 
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 builder.Services.AddScoped<IInvoiceService, InvoiceService>();
@@ -49,6 +54,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseMiddleware<GlobalExceptionMiddleware>();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
